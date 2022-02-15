@@ -150,7 +150,7 @@ float noise(vec3 point) {
             }
       }
 
-      pos = uView * uModel * vec4(aPos, 1.);
+      pos = uView * uModel * vec4(P, 1.);
       // pos.z += 1. / uProj[2].w;
       pos = uProj * pos;
 
@@ -215,8 +215,9 @@ const int nl = 2;                   // NUMBER OF LIGHTS
        vec3 R = 2. * dot(uLDir[n], N) * N - uLDir[n];
        color += uLCol[n] * (
                  diffuse * max(0., dot(uLDir[n], N))
-               + specular.rgb * pow(max(0., R.z), specular.w)
+              //  + specular.rgb * pow(max(0., R.z), specular.w)
        );
+       if(pow(max(0., R.z), specular.w) > .8) color += .3 * specular.rgb;
     }
     vec4 texture = texture(uSampler, vUV);
     color *= mix(vec3(1.), texture.rgb, texture.a * uTexture);
@@ -1095,23 +1096,7 @@ export class Renderer {
     let aWts1 = gl.getAttribLocation(pgm.program, 'aWts1');
     gl.enableVertexAttribArray(aWts1);
     gl.vertexAttribPointer(aWts1, 3, gl.FLOAT, false, new_vertex_size * bpe, 12 * bpe);
-    if (views.length == 1) {
-      setUniform('Matrix4fv', 'uProj', false, views[0].projectionMatrix);
-      setUniform('Matrix4fv', 'uView', false, views[0].viewMatrix);
-      window.clay.animate();
-    } else {
-    for (let i = 0; i < views.length; ++i) {
-      let view = views[i];
-      for (let i = 0; i < views.length; ++i) {
-        let vp = view.viewport;
-        gl.viewport(vp.x, vp.y, vp.width, vp.height);
-        setUniform('Matrix4fv', 'uProj', false, view.projectionMatrix);
-        setUniform('Matrix4fv', 'uView', false, view.viewMatrix);
-      }
-      window.clay.animate();
-    }
-   } 
-    // gl.cullFace(gl.BACK);
+    window.clay.animate(views); 
   }
 
   _getRenderTexture(texture) {
