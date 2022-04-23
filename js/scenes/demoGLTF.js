@@ -13,5 +13,9 @@ export const init = async model => {
     global.gltfRoot.addNode(gltf1);
     model.animate(() => {
        gltf1.translation = [0, 1 + .5 * Math.sin(2 * model.time), 0];
+       console.log(gltf1)
+       gltf1.rotation = [0.5,0, 0,1];
+       gltf1.scale = [1.5,1.5,1.5,1]
+      //  gltf1.move(0,1,0);
     });
  }

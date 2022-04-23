@@ -5,6 +5,7 @@ export default () => {
 
    global.scene().addNode(new Gltf2Node({
       url: "./media/gltf/60_fifth_ave/60_fifth_ave.gltf"
+      // url: "./media/gltf/room/scene.gltf"
    }));
 
    return {
@@ -21,6 +22,7 @@ export default () => {
          { name: "DemoNoisyCube"  , path: "./demoNoisyCube.js"  },
          { name: "DemoZoom"       , path: "./demoZoom.js"       },
          { name: "DemoDesktopHand", path: "./demoDesktopHand.js"},
+         { name: "Project", path: "./project.js"},
       ]
    };
 }
