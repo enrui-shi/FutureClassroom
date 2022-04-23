@@ -176,6 +176,33 @@ float noise(vec3 point) {
    }
 `; 
 
+const CUSTOM_SHADER_CODE_MARKER      = '// CUSTOM SHADER CODE GOES HERE';
+const CUSTOM_SHADER_FUNCTIONS_MARKER = '// CUSTOM SHADER FUNCTIONS GO HERE';
+
+export let clayFragWithCustomShader = str => {
+   let src = Clay_FRAG_SOURCE;
+
+   let functions = '';
+   let SF = 'START_FUNCTIONS',
+       EF = 'END_FUNCTIONS';
+   let j = str.indexOf(SF);
+   if (j >= 0) {
+      let k = str.indexOf(EF);
+      functions = str.substring(j + SF.length, k);
+      str = str.substring(0, j) + str.substring(k + EF.length, str.length);
+   }
+
+   let i0 = src.indexOf(CUSTOM_SHADER_FUNCTIONS_MARKER);
+   let i1 = i0 + CUSTOM_SHADER_FUNCTIONS_MARKER.length;
+   src = src.substring(0, i0) + functions + src.substring(i1, src.length);
+
+   let i = src.indexOf(CUSTOM_SHADER_CODE_MARKER);
+   let n = CUSTOM_SHADER_CODE_MARKER.length;
+   src = src.substring(0, i) + str + src.substring(i+n, src.length);
+
+   return src;
+}
+
 const Clay_FRAG_SOURCE = `#version 300 es // NEWER VERSION OF GLSL
 precision highp float; // HIGH PRECISION FLOATS
 
@@ -186,13 +213,16 @@ const int nl = 2;                    // NUMBER OF LIGHTS
  uniform float uOpacity;
  uniform vec3  uLDir[nl], uLCol[nl]; // LIGHTING
  uniform mat4  uPhong;               // MATERIAL
+ uniform mat4  uProj, uView;         // PROJECTION AND VIEW
  uniform sampler2D uSampler0;
+ uniform sampler2D uSampler1;
  uniform float uTexture;
 
  uniform int uMirrored;
- uniform int uProcedure;
  uniform int uTransparentTexture;
  uniform int uVideo;
+ uniform int uAnidraw;
+ uniform int uCustom;
  uniform int uWhitescreen;
 
  in vec3  vAPos, vPos, vNor, vRGB;   // POSITION, NORMAL, COLOR
@@ -212,6 +242,8 @@ float noise(vec3 point) {
   } 
   return .5 * sin(r); 
 }
+
+` + CUSTOM_SHADER_FUNCTIONS_MARKER + `
 
  void main() {
     vec3 ambient, diffuse;
@@ -276,8 +308,14 @@ float noise(vec3 point) {
        color = color * color;
     }
 
-    if (uProcedure == 1) {
-       opacity = sign(noise(2. * vAPos + vec3(uTime,uTime,uTime)));
+    if (uAnidraw == 1) {
+       vec4 anidraw = texture(uSampler1, vUV);
+       color = anidraw.rgb;
+       opacity = anidraw.a;
+    }
+
+    if (uVideo == 0 && uAnidraw == 0 && uCustom == 1) {
+` + CUSTOM_SHADER_CODE_MARKER + `
     }
 
     fragColor = vec4(sqrt(color * vRGB), 1.0) * opacity;
@@ -329,17 +367,6 @@ export class RenderView {
     } else {
       this.viewTransform = viewTransform;
       this._viewMatrix = viewTransform.inverse.matrix;
-
-      // Alternative view matrix code path
-      /*this._viewMatrix = mat4.create();
-      let q = viewTransform.orientation;
-      let t = viewTransform.position;
-      mat4.fromRotationTranslation(
-          this._viewMatrix,
-          [q.x, q.y, q.z, q.w],
-          [t.x, t.y, t.z]
-      );
-      mat4.invert(this._viewMatrix, this._viewMatrix);*/
     }
   }
 
@@ -910,11 +937,6 @@ export class Renderer {
       this._cameraPositions[i][0] = p.x;
       this._cameraPositions[i][1] = p.y;
       this._cameraPositions[i][2] = p.z;
-
-      /*mat4.invert(inverseMatrix, views[i].viewMatrix);
-      let cameraPosition = this._cameraPositions[i];
-      vec3.set(cameraPosition, 0, 0, 0);
-      vec3.transformMat4(cameraPosition, cameraPosition, inverseMatrix);*/
     }
 
     // Draw each set of render primitives in order
@@ -1068,10 +1090,11 @@ export class Renderer {
     let gl = this._gl;
     window.clay.gl = gl;
     if (!window.clay.clayPgm.program) {
+      let fragmentShader = clayFragWithCustomShader(window.customShader ? window.customShader : '');
       window.clay.clayPgm.program = new Program(
         gl,
         Clay_VERTEX_SOURCE,
-        Clay_FRAG_SOURCE
+	fragmentShader,
       );
     }
 
@@ -1158,10 +1181,6 @@ export class Renderer {
 
     if (clay.handsWidget)
        clay.handsWidget.update();
-
-/*
-	Still to do: register labels so they become responsive buttons.
-*/
 
     if (lcb) {
        let updateCB = cb => {

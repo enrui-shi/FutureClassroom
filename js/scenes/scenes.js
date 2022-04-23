@@ -20,6 +20,8 @@ export default () => {
          { name: "DemoHUD"        , path: "./demoHUD.js"        },
          { name: "DemoLabel"      , path: "./demoLabel.js"      },
          { name: "DemoNoisyCube"  , path: "./demoNoisyCube.js"  },
+         { name: "DemoNoisySphere", path: "./demoNoisySphere.js"},
+         { name: "DemoRayTrace"   , path: "./demoRayTrace.js"   },
          { name: "DemoZoom"       , path: "./demoZoom.js"       },
          { name: "DemoDesktopHand", path: "./demoDesktopHand.js"},
          { name: "Project", path: "./project.js"},
