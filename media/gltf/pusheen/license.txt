@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pusheen
+* source:	https://sketchfab.com/3d-models/pusheen-119f9365eafd46669096e3215b2d8abe
+* author:	iMachina (https://sketchfab.com/iMachina)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pusheen" (https://sketchfab.com/3d-models/pusheen-119f9365eafd46669096e3215b2d8abe) by iMachina (https://sketchfab.com/iMachina) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

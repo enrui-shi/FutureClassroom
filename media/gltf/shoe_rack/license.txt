@@ -1,0 +1,11 @@
+Model Information:
+* title:	IKEA TJUSIG Shoe Rack
+* source:	https://sketchfab.com/3d-models/ikea-tjusig-shoe-rack-948a2d3130ea40fbbb2dc0a676580a28
+* author:	HairMetalAddict (https://sketchfab.com/hairmetaladdict)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "IKEA TJUSIG Shoe Rack" (https://sketchfab.com/3d-models/ikea-tjusig-shoe-rack-948a2d3130ea40fbbb2dc0a676580a28) by HairMetalAddict (https://sketchfab.com/hairmetaladdict) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)

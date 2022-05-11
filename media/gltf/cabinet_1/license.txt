@@ -1,0 +1,11 @@
+Model Information:
+* title:	Liquor Cabinet
+* source:	https://sketchfab.com/3d-models/liquor-cabinet-7b6d3f01815f406c90b9378790286b22
+* author:	brendanp1237 (https://sketchfab.com/brendanp1237)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Liquor Cabinet" (https://sketchfab.com/3d-models/liquor-cabinet-7b6d3f01815f406c90b9378790286b22) by brendanp1237 (https://sketchfab.com/brendanp1237) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

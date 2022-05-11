@@ -1,0 +1,11 @@
+Model Information:
+* title:	Andrews Oculus Controller Left
+* source:	https://sketchfab.com/3d-models/andrews-oculus-controller-left-c381b70a5c22471ab12c2abccc8c5880
+* author:	djvivid (https://sketchfab.com/djvivid)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Andrews Oculus Controller Left" (https://sketchfab.com/3d-models/andrews-oculus-controller-left-c381b70a5c22471ab12c2abccc8c5880) by djvivid (https://sketchfab.com/djvivid) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -6,16 +6,12 @@ import * as global from "../global.js";
 import { Gltf2Node } from "../render/nodes/gltf2.js";
 
 export const init = async model => {
-    let gltf1 = new Gltf2Node({ url: './media/gltf/headset/headset.gltf' });
-    let gltf2 = new Gltf2Node({ url: './media/gltf/headset/headset.gltf' });
-    gltf1.addNode(gltf2);
-    gltf2.matrix = [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0.5,0,1];
-    global.gltfRoot.addNode(gltf1);
+   let carbint = new Gltf2Node({ url: './media/gltf/pusheen/scene.gltf' });
+   global.gltfRoot.addNode(carbint)
+   carbint.translation = [0,2,0,1]
+   carbint.scale = [0.5,0.5,0.5,1]
+   carbint.translation =[0,0,0,1]
     model.animate(() => {
-       gltf1.translation = [0, 1 + .5 * Math.sin(2 * model.time), 0];
-       console.log(gltf1)
-       gltf1.rotation = [0.5,0, 0,1];
-       gltf1.scale = [1.5,1.5,1.5,1]
-      //  gltf1.move(0,1,0);
+      
     });
  }

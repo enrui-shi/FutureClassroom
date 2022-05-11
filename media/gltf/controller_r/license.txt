@@ -1,0 +1,11 @@
+Model Information:
+* title:	Andrews Oculus Controller Right
+* source:	https://sketchfab.com/3d-models/andrews-oculus-controller-right-97afd97da756445daf895cc439c46ed6
+* author:	djvivid (https://sketchfab.com/djvivid)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Andrews Oculus Controller Right" (https://sketchfab.com/3d-models/andrews-oculus-controller-right-97afd97da756445daf895cc439c46ed6) by djvivid (https://sketchfab.com/djvivid) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
